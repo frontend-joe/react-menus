@@ -1,0 +1,145 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Euclid Circular A", Poppins;
+  color: #f9f9f9;
+  background: #1e1b1f;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.burger,
+.menu {
+  position: fixed;
+}
+
+.burger {
+  z-index: 4;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+  background-image: url("./menu.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.burger.open {
+  background-image: url("./close.svg");
+}
+
+.background {
+  position: fixed;
+  z-index: 2;
+  top: 44px;
+  left: 44px;
+  aspect-ratio: 1 / 1;
+  translate: -50% -50%;
+  height: 88px;
+  background: #07030a;
+  border-radius: 50%;
+  opacity: 0;
+  transition: 0.6s;
+}
+
+.background.open {
+  height: 300vh;
+  opacity: 0.85;
+}
+
+.menu {
+  z-index: 3;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.05s;
+}
+
+.menu nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 100px;
+}
+
+.menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+body .menu nav:hover > a {
+  opacity: 0.25;
+}
+
+body .menu nav > a:hover {
+  opacity: 1;
+}
+
+.menu a {
+  color: #f9f9f9;
+  font-size: 32px;
+  font-family: "Euclid Circular A";
+  padding: 20px 0 20px 20px;
+  text-decoration: none;
+  text-transform: capitalize;
+  opacity: 0;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.menu.open a {
+  opacity: 1;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    translate: 0 30px;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.appear {
+  animation: appear 0.35s backwards;
+}
+
+.page {
+  padding: 100px 15%;
+  transition: 0.6s;
+}
+
+.page.open {
+  filter: blur(10px);
+}
+
+.page h2 {
+  font-weight: 400;
+}
+
+.page p {
+  line-height: 1.66;
+  opacity: 0.6;
+}
